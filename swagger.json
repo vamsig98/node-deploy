@@ -1,0 +1,169 @@
+{
+    "openapi":"3.0.0",
+    "info" : {
+        "description": " This is the api for users",
+        "version" : "__version"
+    },
+    "tags" : [
+        {"name" : "PUBLIC ROUTE",
+         "description" : "Public Route"
+        }
+    ],
+    "paths" : {
+        "/health" : {
+            "summary" : "Testing Users check",
+            "get" : {
+                "description" : " Testing users check for the app",
+                "tags":["PUBLIC ROUTE"],
+                "responses": {
+                    "200": {
+                        "description" : "users pass"
+                    }
+                }
+            }
+        },
+        "/users" : {
+            "summary" : "Get users",
+            "get" : {
+                "description" : " Testing get users for the app",
+                "tags":["PUBLIC ROUTE"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name" : "role",
+                        "schema" : {
+                            "type" : "string"
+                        },
+                        "description" : "choose role as admin or user"
+                    },
+                    {
+                        "in": "query",
+                        "name" : "city",
+                        "schema" : {
+                            "type" : "string"
+                        },
+                        "description" : "Enter city"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description" : "user details"
+                    }
+                }
+            }
+        },
+        "/user/{id}" : {
+            "summary" : "get user based on parameters",
+            "get" : {
+                "description" : " Testing users based on the id for the app",
+                "tags":["PUBLIC ROUTE"],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name" : "id",
+                        "required" : true,
+                        "schema" : {
+                            "type" : "string"
+                        },
+                        "description" : "Enter object id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description" : "user details"
+                    }
+                }
+            }
+        },
+        "/addUser":{
+            "summary":"Testing Health Check",
+            "post":{
+                "description":"Testing User Details for the app",
+                "tags":["PUBLIC ROUTE"],
+                "requestBody":{
+                    "required":"true",
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "id":"string"
+                            },
+                            "example":{
+                                "name":"Keerti",
+                                "city":"Amsterdam",
+                                "phone":989878762,
+                                "role":"User",
+                                "isActive":true
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200":{
+                        "description":"User Details"
+                    }
+                }
+
+            }
+        },
+        "/updateUser":{
+            "summary":"Update User",
+            "put":{
+                "description":"Testing Update User Details for the app",
+                "tags":["PUBLIC ROUTE"],
+                "requestBody":{
+                    "required":"true",
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "id":"string"
+                            },
+                            "example":{
+                                "_id":"",
+                                "name":"Keerti",
+                                "city":"Amsterdam",
+                                "phone":989878762,
+                                "role":"User",
+                                "isActive":true
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200":{
+                        "description":"User Details"
+                    }
+                }
+
+            }
+        },
+        "/deleteUser":{
+            "summary":"Delete User",
+            "delete":{
+                "description":"Testing Delete User Details for the app",
+                "tags":["PUBLIC ROUTE"],
+                "requestBody":{
+                    "required":"true",
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "id":"string"
+                            },
+                            "example":{
+                                "_id":""
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200":{
+                        "description":"User Details"
+                    }
+                }
+
+            }
+        }
+    }
+}
